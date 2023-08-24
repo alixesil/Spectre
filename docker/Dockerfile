@@ -66,6 +66,10 @@ RUN R -e "library(BiocManager); BiocManager::install(c('flowCore', 'Biobase', 'f
 # Install Spectre package. Master branch
 RUN R -e "library(devtools); install_github('ImmuneDynamics/Spectre')"
 
+# Install Spectre parckage. Forked?
+RUN git clone https://github.com/alixesil/Spectre.git && cd Spectre && \ 
+    R CMD INSTALL .  
+RUN cd Spectre && git checkout devel && git pull 
 
 # Install cytonorm package.
 RUN R -e "library(devtools); install_github('saeyslab/CytoNorm')"
