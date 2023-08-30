@@ -1,6 +1,6 @@
 # Get base image. Tidyverse R studio
 FROM rocker/geospatial:4.1.0
-LABEL maintainer="Thomas Ashhurst <thomas.ashhurst@sydney.edu.au>"
+LABEL maintainer="Alix Moawad"
 
 # Set Locale to utf-8
 RUN sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
@@ -64,9 +64,9 @@ RUN R -e "library(BiocManager); BiocManager::install(c('flowCore', 'Biobase', 'f
      
                  
 # Install Spectre package. Master branch
-RUN R -e "library(devtools); install_github('ImmuneDynamics/Spectre')"
+RUN R -e "library(devtools); install_github('alixesil/Spectre')"
 
-# Install Spectre parckage. Forked?
+# Install Spectre package. Forked branch
 RUN git clone https://github.com/alixesil/Spectre.git && cd Spectre && \ 
     R CMD INSTALL .  
 RUN cd Spectre && git checkout devel && git pull 
