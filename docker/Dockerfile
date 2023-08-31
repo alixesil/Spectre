@@ -64,11 +64,11 @@ RUN R -e "library(BiocManager); BiocManager::install(c('flowCore', 'Biobase', 'f
      
                  
 # Install Spectre package. Master branch
-RUN R -e "library(devtools); install_github('alixesil/Spectre')"
+#RUN R -e "library(devtools); install_github('alixesil/Spectre')"
 
 # Install Spectre package. Forked branch
-#RUN git clone https://github.com/alixesil/Spectre.git && cd Spectre && \ 
-#    R CMD INSTALL .  
+RUN git clone https://github.com/alixesil/Spectre.git && cd Spectre && \ 
+    R CMD INSTALL .  
 RUN cd Spectre && git checkout devel && git pull 
 
 # Install cytonorm package.
